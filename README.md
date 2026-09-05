@@ -1,3 +1,11 @@
+> **This repository has moved and is archived.**
+>
+> Its contents are now [`installer/`](https://github.com/metasequoiaime/MSIME-Windows/tree/main/installer) in
+> [metasequoiaime/MSIME-Windows](https://github.com/metasequoiaime/MSIME-Windows), which holds the packaging flow: collecting build outputs, self-signing and Inno Setup packaging.
+> Full history was preserved through the move, so `git log` and `git blame` follow files into their new paths.
+>
+> Open issues and pull requests belong in MSIME-Windows. Nothing here will be updated.
+
 # Metasequoia IME Installer
 
 本仓的脚本从相邻源码仓库收集产物、签名、用 Inno Setup 打成安装包。它服务两条流程：
