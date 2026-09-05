@@ -9,7 +9,7 @@ param(
     [string]$TsfDirectory = 'MetasequoiaImeTsf',
     [string]$ServerDirectory = 'MetasequoiaImeServer',
     [string]$UiHtmlDirectory = 'MetasequoiaImeUiHtml',
-    [string]$HelpCodeDirectory = 'MetasequoiaImeHelpCode',
+    [string]$HelpCodeDirectory = 'MetasequoiaImeEngine/helpcode',
     [string]$DictionaryDirectory = 'MetasequoiaImeDict',
     [switch]$Light
 )

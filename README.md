@@ -13,14 +13,16 @@
 
 ## CI 契约
 
-`MSIME-Windows` 的 release workflow **不加修改地调用本仓的 `Prepare-PackageFiles.ps1` 和 `Compile-Installer.ps1`**。它把各个仓库 checkout 到历史目录名下（`MetasequoiaImeTsf`、`MetasequoiaImeServer`、`MetasequoiaImeUiHtml`、`MetasequoiaImeHelpCode`、`MetasequoiaImeDict`），而这些名字现在是 `Prepare-PackageFiles.ps1` 的参数默认值，不再是写死在脚本里的字面量。
+`MSIME-Windows` 的 release workflow **不加修改地调用本仓的 `Prepare-PackageFiles.ps1` 和 `Compile-Installer.ps1`**。它把各个仓库 checkout 到历史目录名下（`MetasequoiaImeTsf`、`MetasequoiaImeServer`、`MetasequoiaImeUiHtml`、`MetasequoiaImeEngine`、`MetasequoiaImeDict`），而这些名字现在是 `Prepare-PackageFiles.ps1` 的参数默认值，不再是写死在脚本里的字面量。
+
+辅助码默认从固定 Engine 提交下的 `MetasequoiaImeEngine/helpcode/helpcodes` 收集，词库仍来自产品锁中的已发布数据。旧布局可通过 `-HelpCodeDirectory` 显式指定，不会自动回退到另一份辅助码。
 
 调用方如果用的是当前的仓库名，直接传参即可，不必为了迁就脚本去重命名目录：
 
 ```powershell
 pwsh -File ./Prepare-PackageFiles.ps1 -TargetVersion 1.2.3 -RepoRoot ..\src `
     -TsfDirectory MSIME-Windows -ServerDirectory MSIME-Server `
-    -UiHtmlDirectory MSIME-UiHtml -HelpCodeDirectory MSIME-HelpCode `
+    -UiHtmlDirectory MSIME-UiHtml -HelpCodeDirectory MSIME-Engine/helpcode `
     -DictionaryDirectory MSIME-Dict
 ```
 
@@ -41,7 +43,7 @@ pwsh -File ./Prepare-PackageFiles.ps1 -TargetVersion 1.2.3 -RepoRoot ..\src `
   - `MetasequoiaImeTsf`（或用 `-TsfDirectory` 指定实际目录名，下同）
   - `MetasequoiaImeServer`
   - `MetasequoiaImeUiHtml`
-  - `MetasequoiaImeHelpCode`
+  - `MetasequoiaImeEngine`
   - `MetasequoiaImeDict`
 
 ## 本地跑之前请先改路径
